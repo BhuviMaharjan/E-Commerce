@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} - e-xom store</title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    {% include 'core/navbar.html' %}
+    <div class="container">
+        <div class="product-main">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-img">
+            <div class="product-info">
+                <div class="product-name">{{ product.name }}</div>
+                <div class="product-price">₹{{ product.price }}</div>
+                <div class="product-desc">{{ product.description }}</div>
+                {% if user.is_authenticated %}
+                <form method="post" action="{% url 'add_to_cart' product.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="add-cart-btn">Add to Cart</button>
+                </form>
+                <a href="{% url 'cart_page' %}" style="color:#e91e63; font-weight:bold; display:inline-block; margin-top:1rem;">Go to Cart</a>
+                {% else %}
+                <p><a href="{% url 'login' %}" style="color:#e91e63; font-weight:bold;">Login to add to cart</a></p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="section-title">Related Products (Category)</div>
+        <div class="recommend-row">
+            {% for p in related_by_category %}
+                <div class="recommend-card">
+                    <img src="{{ p.image.url }}" alt="{{ p.name }}" class="recommend-img">
+                    <div class="recommend-name">{{ p.name }}</div>
+                    <div class="recommend-price">₹{{ p.price }}</div>
+                    <a href="{% url 'product_detail' p.pk %}" class="view-btn">View</a>
+                </div>
+            {% empty %}
+                <p>No related products in this category.</p>
+            {% endfor %}
+        </div>
+        <div class="section-title">Related Products (Tags)</div>
+        <div class="recommend-row">
+            {% for p in related_by_tags %}
+                <div class="recommend-card">
+                    <img src="{{ p.image.url }}" alt="{{ p.name }}" class="recommend-img">
+                    <div class="recommend-name">{{ p.name }}</div>
+                    <div class="recommend-price">₹{{ p.price }}</div>
+                    <a href="{% url 'product_detail' p.pk %}" class="view-btn">View</a>
+                </div>
+            {% empty %}
+                <p>No related products by tags.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html> 

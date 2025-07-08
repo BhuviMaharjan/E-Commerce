@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product - e-xom store</title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    {% include 'core/navbar.html' %}
+    <div class="container form-container">
+        <h2>Delete Product</h2>
+        <p>Are you sure you want to delete the product <b>{{ product.name }}</b>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <a href="{% url 'manage_products' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html> 

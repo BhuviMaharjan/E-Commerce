@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register as Buyer - e-xom store</title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    {% include 'core/navbar.html' %}
+    <div class="container">
+        <h2>Register as Buyer</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Register</button>
+        </form>
+        <p style="text-align:center; margin-top:1rem;">Already have an account? <a href="{% url 'login' %}" style="color:#e91e63;">Login</a></p>
+    </div>
+</body>
+</html> 
+ 

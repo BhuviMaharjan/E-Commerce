@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Categories - e-xom store</title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    {% include 'core/navbar.html' %}
+    <div class="container">
+        <h1>Manage Categories</h1>
+        <a href="{% url 'add_category' %}" class="btn btn-pink" style="margin-bottom: 1rem; display: inline-block;">Add Category</a>
+        <table>
+            <tr><th>Name</th><th>Actions</th></tr>
+            {% for category in categories %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a href="{% url 'edit_category' category.pk %}" class="btn">Edit</a>
+                    <a href="{% url 'delete_category' category.pk %}" class="btn" style="background:#d32f2f;">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="2">No categories found.</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html> 

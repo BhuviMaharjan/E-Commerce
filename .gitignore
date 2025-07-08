@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+/media/product_images/*
+!/media/product_images/.gitkeep
+/staticfiles
+/static
+.DS_Store
+
+# Virtualenv
+venv/
+ENV/
+env/
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Migrations
+# */migrations/*
+# !*/migrations/__init__.py
+
+# Local settings
+local_settings.py
+.env
+.env.*
+
+# Coverage
+htmlcov/
+.coverage
+.tox/
+.nox/
+
+# Test
+*.mo
+
+# Node
+node_modules/

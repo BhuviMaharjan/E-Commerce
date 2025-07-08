@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - e-xom store</title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    {% include 'core/navbar.html' %}
+    <div class="container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p style="text-align:center; margin-top:1rem;">Don't have an account? <a href="{% url 'register_buyer' %}" style="color:#e91e63;">Register as Buyer</a> | <a href="{% url 'register_seller' %}" style="color:#e91e63;">Register as Seller</a></p>
+    </div>
+</body>
+</html> 

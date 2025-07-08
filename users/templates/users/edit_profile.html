@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="container">
+    <a href="{% url 'profile_dashboard' %}" class="back-btn">&larr; Back to Profile</a>
+    <h2>Edit Profile</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <label for="id_username">Username</label>
+        {{ form.username }}
+        {{ form.username.errors }}
+        <label for="id_email">Email</label>
+        {{ form.email }}
+        {{ form.email.errors }}
+        <label for="id_phone_number">Phone Number</label>
+        {{ form.phone_number }}
+        {{ form.phone_number.errors }}
+        <label for="id_address">Address</label>
+        {{ form.address }}
+        {{ form.address.errors }}
+        <button type="submit">Save Changes</button>
+    </form>
+</div>
+{% endblock %} 

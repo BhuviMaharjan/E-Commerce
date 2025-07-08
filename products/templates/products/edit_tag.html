@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Tag - e-xom store</title>
+    <style>
+        body { background: #ffe4ec; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; }
+        .container { max-width: 400px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 16px #f8bbd0; padding: 2.5rem 2rem; }
+        h1 { color: #e91e63; text-align: center; }
+        label { color: #e91e63; font-weight: bold; }
+        .btn { background: #e91e63; color: #fff; border: none; padding: 0.7rem 1.5rem; border-radius: 6px; cursor: pointer; width: 100%; font-size: 1.1rem; }
+        .btn:hover { background: #ad1457; }
+        .errorlist { color: #d32f2f; margin-bottom: 1rem; }
+        .back-link { display: block; text-align: center; margin-top: 1.5rem; color: #ad1457; text-decoration: underline; }
+        .navbar { background: #e91e63; padding: 1rem 0; text-align: center; }
+        .navbar a { color: #fff; text-decoration: none; margin: 0 1rem; font-weight: bold; font-size: 1.1rem; }
+        .navbar a:hover { text-decoration: underline; }
+        .logo { font-size: 2.2rem; font-weight: bold; color: #fff; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+    {% include 'core/navbar.html' %}
+    <div class="container">
+        <h1>Edit Tag</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Save Changes</button>
+        </form>
+        <a href="{% url 'manage_tags' %}" class="back-link">&larr; Back to Manage Tags</a>
+    </div>
+</body>
+</html> 

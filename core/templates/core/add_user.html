@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    {% include 'core/navbar.html' %}
+    <div class="container form-container">
+        <h2>Add User</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label>Email:</label>
+            <input type="email" name="email" required>
+            <label>Username:</label>
+            <input type="text" name="username" required>
+            <label>Phone Number:</label>
+            <input type="text" name="phone_number" required>
+            <label>Address:</label>
+            <textarea name="address" required></textarea>
+            <label>Role:</label>
+            <select name="role" required>
+                {% for value, label in roles %}
+                    <option value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+            <label>Password:</label>
+            <input type="password" name="password" required>
+            <button type="submit" class="btn btn-pink">Add User</button>
+        </form>
+    </div>
+</body>
+</html> 
