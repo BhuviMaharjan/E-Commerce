@@ -4,28 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>e-xom store - Empowering Women Through Handicrafts</title>
-    <style>
-        body { background: #ffe4ec; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; }
-        .navbar { background: #e91e63; padding: 1rem 0; text-align: center; }
-        .navbar a { color: #fff; text-decoration: none; margin: 0 1rem; font-weight: bold; font-size: 1.1rem; }
-        .navbar a:hover { text-decoration: underline; }
-        .logo { font-size: 2.2rem; font-weight: bold; color: #fff; letter-spacing: 2px; }
-        .container { max-width: 700px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 16px #f8bbd0; padding: 2.5rem 2rem; text-align: center; }
-        h1 { color: #e91e63; margin-bottom: 0.5rem; }
-        p { color: #ad1457; font-size: 1.2rem; margin-bottom: 2rem; }
-        .cta-btn { background: #e91e63; color: #fff; border: none; padding: 1rem 2.5rem; border-radius: 6px; font-size: 1.1rem; cursor: pointer; margin: 0.5rem; transition: background 0.2s; }
-        .cta-btn:hover { background: #ad1457; }
-        @media (max-width: 600px) {
-            .container { padding: 1.2rem 0.5rem; }
-            .logo { font-size: 1.5rem; }
-        }
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
 </head>
 <body>
     {% include 'core/navbar.html' %}
     <div class="container">
-        <h1>Empowering Women Through Handicrafts</h1>
-        <p>Welcome to <b>e-xom store</b> – your destination for beautiful, authentic handicraft materials. Our mission is to empower women by providing a platform to showcase and sell their unique creations. Discover, support, and celebrate women artisans!</p>
+        <h1>Empowering Communities, Centering Women</h1>
+        <p>Welcome to <b>Kaushalya Bazaar</b> – a vibrant platform where skills meet opportunity. While we proudly highlight and support women creators, our marketplace is open to all individuals showcasing their talents. From handcrafted goods to diverse skill-based products and services, explore authentic creations, support local talent, and be part of a movement that celebrates empowerment through entrepreneurship.
+        </p>
         <a href="{% url 'login' %}" class="cta-btn">Shop Now</a>
         <a href="{% url 'register_seller' %}" class="cta-btn">Become a Seller</a>
     </div>

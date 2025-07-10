@@ -1,33 +1,38 @@
+{% load static %}
 <div class="navbar">
-    <span class="logo">e-xom store</span>
-    {% if user.is_authenticated %}
-        {% if user.role == 'buyer' %}
+    <a href="/" class="navbar-logo">
+        <img src="{% static 'core/logo.png' %}" alt="Logo">
+    </a>
+    <div class="navbar-links">
+        {% if user.is_authenticated %}
+            {% if user.role == 'buyer' %}
+                <a href="/">Home</a>
+                <a href="{% url 'store' %}">Store</a>
+                <a href="{% url 'cart_page' %}">Cart</a>
+                <a href="{% url 'order_history' %}">Order History</a>
+                <a href="{% url 'profile_dashboard' %}">Profile</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            {% elif user.role == 'seller' %}
+                <a href="/">Home</a>
+                <a href="{% url 'add_product' %}">Add Product</a>
+                <a href="{% url 'manage_products' %}">Manage Products</a>
+                <a href="{% url 'seller_orders' %}">Orders</a>
+                <a href="{% url 'profile_dashboard' %}">Profile</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            {% elif user.role == 'admin' %}
+                <a href="/">Home</a>
+                <a href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
+                <a href="{% url 'manage_categories' %}">Categories</a>
+                <a href="{% url 'manage_tags' %}">Tags</a>
+                <a href="{% url 'profile_dashboard' %}">Profile</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+        {% else %}
             <a href="/">Home</a>
             <a href="{% url 'store' %}">Store</a>
-            <a href="{% url 'cart_page' %}">Cart</a>
-            <a href="{% url 'order_history' %}">Order History</a>
-            <a href="{% url 'profile_dashboard' %}">Profile</a>
-            <a href="{% url 'logout' %}">Logout</a>
-        {% elif user.role == 'seller' %}
-            <a href="/">Home</a>
-            <a href="{% url 'add_product' %}">Add Product</a>
-            <a href="{% url 'manage_products' %}">Manage Products</a>
-            <a href="{% url 'seller_orders' %}">Orders</a>
-            <a href="{% url 'profile_dashboard' %}">Profile</a>
-            <a href="{% url 'logout' %}">Logout</a>
-        {% elif user.role == 'admin' %}
-            <a href="/">Home</a>
-            <a href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
-            <a href="{% url 'manage_categories' %}">Categories</a>
-            <a href="{% url 'manage_tags' %}">Tags</a>
-            <a href="{% url 'profile_dashboard' %}">Profile</a>
-            <a href="{% url 'logout' %}">Logout</a>
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register_buyer' %}">Register as Buyer</a>
+            <a href="{% url 'register_seller' %}">Register as Seller</a>
         {% endif %}
-    {% else %}
-        <a href="/">Home</a>
-        <a href="{% url 'store' %}">Store</a>
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'register_buyer' %}">Register as Buyer</a>
-        <a href="{% url 'register_seller' %}">Register as Seller</a>
-    {% endif %}
+    </div>
 </div> 
